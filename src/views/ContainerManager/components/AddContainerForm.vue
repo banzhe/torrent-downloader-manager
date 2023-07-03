@@ -40,7 +40,16 @@ import {ContainerTypeEnum} from '@/enums/containerTypeEnum.ts'
 import {storeToRefs} from 'pinia'
 
 const formRef = ref<FormInst | null>(null)
-const formValue = ref(<Container>{})
+const initFormData: Container = {
+  name: '',
+  password: '',
+  sort: 0,
+  transmissionSessionId: '',
+  type: ContainerTypeEnum.transmission,
+  url: '',
+  username: ''
+}
+const formValue = ref({...initFormData})
 const rules = {
   name: [
     {
@@ -64,7 +73,7 @@ const addNewContainer = () => {
 }
 
 const resetForm = () => {
-  ({...formValue.value} = <Container>{})
+  formValue.value = {...initFormData}
 }
 
 const options = [
