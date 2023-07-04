@@ -52,7 +52,7 @@ api.interceptors.response.use(
   (error: any) => {
     // 处理响应错误
     console.error('响应错误:', error)
-    if (error.response.status === 409) {
+    if (error?.response?.status === 409) {
       const store = useContainerMapStore()
       const container = store.containerMap[error.config.__containerName]
       const newTransmissionSessionId = error.response.headers['x-transmission-session-id']
